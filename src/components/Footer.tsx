@@ -1,7 +1,7 @@
 
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { companyInfo, productsData } from '../data/siteData';
+import { companyInfo } from '../data/siteData';
 
 export default function Footer() {
   const { lang } = useLanguage();
