@@ -21,7 +21,7 @@ export const productsData: Product[] = [
   {
     slug: "standart-4-kulplu",
     title: { tr: "Standart 4 Kulplu Big Bag", en: "Standard 4-Loop Big Bag" },
-    image: "images/standart-big-bag.png",
+    image: "public/images/standart-big-bag.png",
     capacity: "500 kg - 2000 kg",
     capacityNote: { tr: "(Talebe ve ihtiyaca göre özel üretim)", en: "(Customized according to requirements)" },
     desc: {
