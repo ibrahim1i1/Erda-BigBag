@@ -1,0 +1,1454 @@
+/* ==========================================================================
+   1. متغيرات الألوان والخطوط العامة (Design Tokens & CSS Variables)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --bg-main: #f8fafc;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --primary-blue: #0284c7;
+  --primary-dark: #0369a1;
+  --dark-navy: #060b18;
+  --accent-green: #25d366;
+  --border-color: #e2e8f0;
+  --white: #ffffff;
+  --success-green: #16a34a;
+  --error-red: #dc2626;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(6, 11, 24, 0.06);
+  --shadow-lg: 0 16px 36px rgba(6, 11, 24, 0.1);
+}
+
+/* ==========================================================================
+   2. تصفير وإعدادات العناصر الأساسية (Reset & Base Styles)
+   ========================================================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--white);
+  color: var(--text-dark);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.container {
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================================================
+   3. الشريط العلوي (Top Bar)
+   ========================================================================== */
+.top-bar {
+  background-color: var(--dark-navy);
+  color: #cbd5e1;
+  padding: 14px 0;
+  font-size: 13.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.top-bar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-info {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.top-info i {
+  color: var(--primary-blue);
+  margin-right: 6px;
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lang-switch i {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.lang-switch button {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 2px 4px;
+  transition: color 0.2s ease;
+}
+
+.lang-switch button.active,
+.lang-switch button:hover {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+/* ==========================================================================
+   4. شريط التنقل والنافبار (Main Header & Navbar)
+   ========================================================================== */
+.main-header {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.nav-content {
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo-img {
+  height: 65px;
+  width: auto;
+  max-width: 280px;
+  object-fit: contain;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-links a {
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 16.5px;
+  transition: all 0.25s ease;
+  padding: 8px 0;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary-blue);
+  border-bottom: 3px solid var(--primary-blue);
+}
+
+.nav-btn {
+  background: var(--dark-navy) !important;
+  color: #ffffff !important;
+  padding: 10px 22px !important;
+  border-radius: 8px;
+  font-weight: 700 !important;
+  border-bottom: none !important;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: var(--primary-blue) !important;
+  transform: translateY(-2px);
+}
+
+/* القائمة المنسدلة */
+.dropdown-item {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 16.5px;
+  color: var(--text-dark);
+  cursor: pointer;
+  padding: 8px 0;
+  transition: color 0.25s ease;
+}
+
+.dropdown-toggle:hover {
+  color: var(--primary-blue);
+}
+
+.arrow-icon {
+  font-size: 12px;
+  transition: transform 0.25s ease;
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 260px;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+  z-index: 200;
+}
+
+.submenu li a {
+  display: block;
+  padding: 11px 20px;
+  font-size: 15px;
+  color: var(--text-dark);
+  border-bottom: none !important;
+}
+
+.submenu li a:hover {
+  background: #f0f9ff;
+  color: var(--primary-blue);
+  padding-left: 24px;
+}
+
+.dropdown-item:hover .submenu,
+.dropdown-item.active .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item:hover .arrow-icon,
+.dropdown-item.active .arrow-icon {
+  transform: rotate(180deg);
+}
+
+/* زر قائمة الهاتف والآيباد */
+.menu-btn {
+  display: none;
+  width: 32px;
+  height: 24px;
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+.menu-btn span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--dark-navy);
+  position: absolute;
+  left: 0;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.menu-btn span:nth-child(1) { top: 0; }
+.menu-btn span:nth-child(2) { top: 10px; }
+.menu-btn span:nth-child(3) { top: 20px; }
+
+.menu-btn.open span:nth-child(1) { top: 10px; transform: rotate(45deg); }
+.menu-btn.open span:nth-child(2) { opacity: 0; }
+.menu-btn.open span:nth-child(3) { top: 10px; transform: rotate(-45deg); }
+
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 998;
+}
+
+.nav-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ==========================================================================
+   5. قسم الهيرو والسلايدر (Hero Section)
+   ========================================================================== */
+.hero-section {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+  padding: 70px 0;
+  border-bottom: 1px solid var(--border-color);
+  min-height: calc(85vh - 90px);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.hero-text h1 {
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.22;
+  color: var(--dark-navy);
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+}
+
+.hero-desc {
+  font-size: 19px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 13px 28px;
+  border-radius: 9px;
+  font-weight: 700;
+  font-size: 15.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--primary-blue);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.3);
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: var(--text-dark);
+  border: 1.5px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.hero-image-box {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  height: 450px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background-color: #e2e8f0;
+}
+
+.hero-image-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-image-box img.active {
+  opacity: 1;
+}
+
+.image-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(6, 11, 24, 0.88);
+  color: #ffffff;
+  padding: 14px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  backdrop-filter: blur(4px);
+}
+
+/* ==========================================================================
+   6. شبكة عرض المنتجات في الرئيسية (Showcase Grid)
+   ========================================================================== */
+.erdas-showcase-section {
+  padding: 85px 0;
+  background-color: #ffffff;
+}
+
+.urunlerimiz {
+  text-align: center;
+  font-size: 42px;
+  letter-spacing: -0.5px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.urunlerimiz-praqraf {
+  text-align: center;
+  margin-bottom: 55px;
+  color: var(--text-muted);
+  font-size: 17px;
+}
+
+.erdas-bags-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.erdas-bag-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.erdas-bag-item:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+
+.bag-header-line {
+  margin-bottom: 14px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bag-header-line h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.bag-render-view {
+  height: 280px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 20px;
+}
+
+.bag-render-view img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  transition: transform 0.3s ease;
+}
+
+.erdas-bag-item:hover .bag-render-view img {
+  transform: scale(1.04);
+}
+
+.btn-clean-incele {
+  display: inline-block;
+  padding: 10px 32px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--primary-blue);
+  background-color: transparent;
+  border: 1.5px solid var(--primary-blue);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.btn-clean-incele:hover {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   7. بطاقات الحلول والميزات الصناعية (Solutions Grid)
+   ========================================================================== */
+.solutions-section {
+  padding: 90px 0;
+  background-color: var(--bg-main);
+  border-top: 1px solid var(--border-color);
+}
+
+.solutions-title {
+  text-align: center;
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--dark-navy);
+}
+
+.solutions-paragraf {
+  text-align: center;
+  margin-bottom: 50px;
+  color: var(--text-muted);
+  font-size: 17px;
+}
+
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.solution-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 34px 30px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.solution-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transition: height 0.25s ease;
+}
+
+.card-capacity::before { background-color: #dc2626; }
+.card-material::before { background-color: #0284c7; }
+.card-uv::before       { background-color: #7c3aed; }
+.card-safety::before   { background-color: #16a34a; }
+
+.solution-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+
+.solution-card:hover::before {
+  height: 6px;
+}
+
+.card-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.card-capacity .card-icon-box { color: #dc2626; background-color: #fee2e2; }
+.card-material .card-icon-box { color: #0284c7; background-color: #e0f2fe; }
+.card-uv .card-icon-box       { color: #7c3aed; background-color: #f3e8ff; }
+.card-safety .card-icon-box   { color: #16a34a; background-color: #dcfce7; }
+
+.card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark-navy);
+  margin-bottom: 12px;
+}
+
+.card-desc {
+  font-size: 15.5px;
+  color: #475569;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   8. صفحة تفاصيل المنتج الديناميكية (Product Detail)
+   ========================================================================== */
+.product-detail-section {
+  padding: 60px 0 90px;
+  min-height: auto;
+}
+
+.product-top-header {
+  margin-bottom: 30px;
+}
+
+.product-main-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--dark-navy);
+}
+
+.product-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.product-media-wrapper {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.product-media-wrapper img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+}
+
+.product-specs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.spec-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 18px 22px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  box-shadow: var(--shadow-sm);
+}
+
+.spec-card.highlight {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.spec-icon {
+  background: #f1f5f9;
+  color: var(--primary-blue);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  flex-shrink: 0;
+}
+
+.spec-card.highlight .spec-icon {
+  background: #dcfce7;
+  color: var(--success-green);
+}
+
+.spec-body h3 {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--dark-navy);
+  margin-bottom: 5px;
+}
+
+.spec-body p {
+  font-size: 14.5px;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.spec-note {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.spec-features-list {
+  margin: 8px 0 0 18px;
+  padding: 0;
+  color: #475569;
+  font-size: 14.5px;
+}
+
+.spec-features-list li {
+  margin-bottom: 6px;
+}
+
+.product-quick-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.spec-action-btn {
+  padding: 13px 26px;
+  border-radius: 9px;
+  font-weight: 600;
+  font-size: 14.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.spec-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.wa-btn {
+  background: var(--accent-green);
+  color: #ffffff !important;
+}
+
+.call-btn {
+  background: var(--primary-blue);
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   9. صفحة من نحن (About Section)
+   ========================================================================== */
+.about-us-section {
+  padding: 85px 0;
+  background-color: #ffffff;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-image-card {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  background-color: #f1f5f9;
+}
+
+.about-image-card img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+}
+
+.section-tag {
+  display: inline-block;
+  background-color: #e0f2fe;
+  color: var(--primary-blue);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-heading {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--dark-navy);
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+}
+
+.about-desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.about-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.about-feature-box {
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  color: var(--primary-blue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.about-feature-box h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark-navy);
+  margin-bottom: 4px;
+}
+
+.about-feature-box p {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   10. صفحة وفورم التواصل والخريطة (Contact & Map)
+   ========================================================================== */
+.contact-page-header {
+  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+  padding: 55px 0 35px;
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.contact-page-tag {
+  display: inline-block;
+  background-color: #e0f2fe;
+  color: var(--primary-blue);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.contact-page-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--dark-navy);
+  margin-bottom: 12px;
+}
+
+.contact-page-desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.map-section {
+  padding: 35px 0 20px;
+}
+
+.map-wrapper-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.map-header-bar {
+  padding: 10px 14px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 12px;
+}
+
+.map-header-bar h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--dark-navy);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.map-header-bar h3 i {
+  color: var(--primary-blue);
+}
+
+.map-frame-holder {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.contact-section {
+  padding: 30px 0 85px;
+}
+
+.contact-main-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.3fr;
+  gap: 50px;
+  align-items: start;
+}
+
+.contact-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding-top: 6px;
+}
+
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.info-row i {
+  font-size: 20px;
+  color: var(--primary-blue);
+  margin-top: 3px;
+  flex-shrink: 0;
+  width: 24px;
+}
+
+.info-text strong {
+  display: block;
+  font-size: 15px;
+  color: var(--dark-navy);
+  margin-bottom: 3px;
+  font-weight: 700;
+}
+
+.info-text p,
+.info-text a {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.info-text a:hover {
+  color: var(--primary-blue);
+}
+
+.contact-form-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  padding: 35px 30px;
+  border-radius: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.form-two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-field {
+  width: 100%;
+  padding: 13px 16px;
+  font-size: 14.5px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 9px;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  outline: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.form-field:focus {
+  background-color: #ffffff;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+}
+
+.form-field::placeholder {
+  color: #94a3b8;
+}
+
+textarea.form-field {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.form-submit-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+.btn-send-message {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 13px 40px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-send-message:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-send-message:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   11. صندوق التنبيهات العائم (Toast Notification)
+   ========================================================================== */
+.toast-popup {
+  position: fixed;
+  top: 25px;
+  left: 50%;
+  transform: translate(-50%, -40px) scale(0.92);
+  background: #ffffff;
+  min-width: 320px;
+  max-width: 480px;
+  width: 90%;
+  padding: 16px 20px 18px;
+  border-radius: 14px;
+  box-shadow: 0 20px 45px -10px rgba(6, 11, 24, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  z-index: 9999999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+.toast-popup.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.toast-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.toast-popup.success .toast-icon-wrap {
+  background-color: #dcfce7;
+  color: var(--success-green);
+}
+.toast-popup.success { border-left: 4px solid var(--success-green); }
+
+.toast-popup.error .toast-icon-wrap {
+  background-color: #fee2e2;
+  color: var(--error-red);
+}
+.toast-popup.error { border-left: 4px solid var(--error-red); }
+
+.toast-text { flex: 1; }
+.toast-text h4 { font-size: 15.5px; font-weight: 700; color: var(--dark-navy); margin-bottom: 2px; }
+.toast-text p { font-size: 13.5px; color: var(--text-muted); line-height: 1.45; }
+
+.toast-close-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.toast-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #e2e8f0;
+}
+
+.toast-popup.success .toast-progress-bar { background-color: var(--success-green); }
+.toast-popup.error .toast-progress-bar { background-color: var(--error-red); }
+
+.toast-popup.show .toast-progress-bar {
+  animation: progressCountdown 5s linear forwards;
+}
+
+@keyframes progressCountdown {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+/* ==========================================================================
+   12. أزرار التواصل العائمة (Floating Action Buttons - مع دعم الآيباد والآيفون)
+   ========================================================================== */
+.call-num-btn {
+  position: fixed !important;
+  bottom: calc(25px + env(safe-area-inset-bottom, 0px)) !important;
+  left: 20px !important;
+  z-index: 9999999 !important;
+}
+
+.whats-button {
+  position: fixed !important;
+  bottom: calc(25px + env(safe-area-inset-bottom, 0px)) !important;
+  right: 20px !important;
+  z-index: 9999999 !important;
+}
+
+.floating-btn {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 12px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff !important;
+  font-size: 26px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.floating-btn:hover {
+  transform: scale(1.12);
+}
+
+.btn-whatsapp { background-color: #25d366 !important; }
+.btn-call { background-color: #0284c7 !important; }
+
+.pulse-wave {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  opacity: 0.7;
+  z-index: -1;
+  animation: floatingPulse 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pulse-whatsapp { background-color: #25d366; }
+.pulse-call { background-color: #0284c7; }
+
+@keyframes floatingPulse {
+  0% { transform: scale(1); opacity: 0.75; }
+  70% { transform: scale(1.55); opacity: 0; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+
+/* ==========================================================================
+   13. الفوتر (Footer)
+   ========================================================================== */
+.main-footer {
+  background: var(--dark-navy);
+  color: #94a3b8;
+  padding: 60px 0 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1.3fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-logo-img {
+  height: 44px;
+  width: auto;
+  margin-bottom: 15px;
+}
+
+.footer-about {
+  font-size: 14.5px;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+  color: #ffffff;
+  font-size: 17px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.footer-links ul { list-style: none; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a { color: #cbd5e1; font-size: 14.5px; transition: color 0.2s; }
+.footer-links a:hover { color: var(--primary-blue); }
+
+.footer-contact p {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  color: #cbd5e1;
+}
+
+.footer-contact i { color: var(--primary-blue); }
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 20px;
+  font-size: 13.5px;
+}
+
+/* ==========================================================================
+   14. تجاوب الشاشات (Responsive Breakpoints - هواتف وأجهزة iPad)
+   ========================================================================== */
+
+/* أجهزة الآيباد واللابتوب الصغير (حتى 1150px لمنع تداخل النافبار) */
+@media (max-width: 1150px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background: #ffffff;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 90px 24px 30px;
+    gap: 12px;
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.14);
+    transition: right 0.3s ease-in-out;
+    z-index: 999;
+    overflow-y: auto;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links li { width: 100%; }
+  
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .nav-btn {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .submenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    padding-left: 15px;
+    display: none;
+  }
+
+  .dropdown-item.active .submenu {
+    display: block;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding: 60px 0;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-image-box {
+    margin: 0 auto;
+    max-width: 520px;
+    height: 380px;
+  }
+
+  .erdas-bags-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .product-grid-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .contact-main-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+/* الشاشات المتوسطة والتابلت الرأسي */
+@media (max-width: 768px) {
+  .top-bar { padding: 10px 0; }
+  .top-bar-content { flex-direction: row; }
+
+  .hero-text h1 { font-size: 34px; }
+  .hero-desc { font-size: 16px; }
+
+  .solutions-grid { grid-template-columns: 1fr; gap: 20px; }
+  .about-features-grid { grid-template-columns: 1fr; gap: 14px; }
+  .form-two-cols { grid-template-columns: 1fr; gap: 16px; }
+
+  .form-submit-row { justify-content: stretch; }
+  .btn-send-message { width: 100%; justify-content: center; }
+
+  .map-frame-holder { height: 300px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 25px; }
+
+  .call-num-btn {
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+    left: 14px !important;
+  }
+
+  .whats-button {
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+    right: 14px !important;
+  }
+
+  .floating-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+  }
+}
+
+/* الهواتف الصغيرة */
+@media (max-width: 580px) {
+  .nav-content { height: 75px; }
+  .header-logo-img { height: 48px; }
+
+  .hero-text h1 { font-size: 26px; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-image-box { height: 260px; }
+
+  .erdas-bags-grid { grid-template-columns: 1fr; gap: 24px; }
+  .bag-render-view { height: 260px; }
+
+  .product-main-title { font-size: 25px; }
+  .product-media-wrapper { padding: 15px; }
+  .spec-action-btn { width: 100%; justify-content: center; }
+
+  .contact-form-box { padding: 22px 18px; }
+  .toast-popup { min-width: 290px; padding: 12px 16px; }
+}
