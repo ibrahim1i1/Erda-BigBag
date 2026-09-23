@@ -41,7 +41,7 @@ export const productsData: Product[] = [
   {
     slug: "q-bag",
     title: { tr: "Q-Bag (Baffle) Big Bag", en: "Q-Bag (Baffle Bag)" },
-    image: "images/Q-bag.png",
+    image: "public/images/Q-bag.png",
     capacity: "1000 kg - 2000 kg",
     capacityNote: { tr: "(Talebe ve ihtiyaca göre özel üretim)", en: "(Custom production upon request)" },
     desc: {
@@ -61,7 +61,7 @@ export const productsData: Product[] = [
   {
     slug: "ic-naylonlu",
     title: { tr: "İç Naylonlu (PE Liner) Big Bag", en: "PE Liner Big Bag" },
-    image: "images/iç-naylonlu-big-bag.png",
+    image: "public/images/iç-naylonlu-big-bag.png",
     capacity: "500 kg - 1500 kg",
     capacityNote: { tr: "(Talebe ve yoğunluğa göre özel üretim)", en: "(Custom production based on demand and density)" },
     desc: {
@@ -81,7 +81,7 @@ export const productsData: Product[] = [
   {
     slug: "capraz-kulplu",
     title: { tr: "Çapraz Kulplu (Cross Corner) Big Bag", en: "Cross Corner Loop Big Bag" },
-    image: "images/çapraz-kuplu-big-bag.png",
+    image: "public/images/çapraz-kuplu-big-bag.png",
     capacity: "1000 kg - 2000 kg",
     capacityNote: { tr: "(Ağır sanayi şartlarına uygun özel üretim)", en: "(Custom production suitable for heavy industrial conditions)" },
     desc: {
