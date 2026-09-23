@@ -51,7 +51,7 @@ export default function Navbar() {
         <div className="container nav-content">
           {/* الشعار */}
           <Link to="/" className="brand-logo" onClick={closeMenu}>
-            <img src="/images/logo.png" alt={companyInfo.name} className="header-logo-img" />
+            <img src="/public/images/logo.png" alt={companyInfo.name} className="header-logo-img" />
           </Link>
 
           {/* زر المنيو للهواتف والآيباد */}
